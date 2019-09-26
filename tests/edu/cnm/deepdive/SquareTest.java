@@ -20,11 +20,8 @@ class SquareTest {
 
   @Test
   void isPerfectException() {
-    assertThrows(IllegalArgumentException.class, new Executable() {
-      @Override
-      public void execute() throws Throwable {
-        Square.isPerfect(-1);
-      }
-    });
+    assertThrows(IllegalArgumentException.class, () -> Square.isPerfect(-1));
+    assertThrows(IllegalArgumentException.class, () -> Square.isPerfect(-2));
+    assertThrows(IllegalArgumentException.class, () -> Square.isPerfect(-3));
   }
 }
