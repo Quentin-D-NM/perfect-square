@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Queue;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 class SquareTest {
 
@@ -19,11 +20,14 @@ class SquareTest {
 
   @Test
   void isPerfectException() {
-    try {
+    assertThrows(IllegalArgumentException.class, new ExecuteIsPerfectSquare());
+  }
+
+  private static class ExecuteIsPerfectSquare implements Executable {
+
+    @Override
+    public void execute() throws Throwable {
       Square.isPerfect(-1);
-      fail();
-    }catch (IllegalArgumentException expected){
-      //Do nothing; this is exactly as expected
     }
   }
 }
